@@ -1,0 +1,62 @@
+version: "3"
+networks:
+    prueba-network:
+        driver: bridge
+services:
+    app-prueba:
+        container_name: prueba
+        build:
+            dockerfile: Dockerfile
+        image: prueba:latest
+        ports:
+            - "8080:8080"
+        networks:
+            - prueba-network
+        depends_on:
+            - mongo
+        links:
+            - mongo
+    prueba-mongo:
+        container_name: prueba-mongo
+        image: mongo:4.0.26
+        restart: always
+        command: mongod --port 27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: secret
+            MONGO_INITDB_DATABASE: prueba
+            TZ: America/Mexico_City
+        ports:
+            - 27017:27017
+        networks:
+            - prueba-network
+    mongo-express:
+        image: mongo-express
+        restart: always
+        ports:
+            - 8082:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: root
+            ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+            ME_CONFIG_MONGODB_PORT: 27017
+            ME_CONFIG_MONGODB_SERVER: prueba-mongo
+            TZ: America/Mexico_City
+        depends_on:
+            - mongo
+        networks:
+            - prueba-network
+        links:
+            - mongo:prueba-mongo
+    rabbitmq:
+        image: rabbitmq:3.12-management
+        container_name: rabbitmq
+        ports:
+            - "5672:5672"
+            - "15672:15672" # Admin
+        environment:
+            RABBITMQ_DEFAULT_USER: guest
+            RABBITMQ_DEFAULT_PASS: guest
+        privileged: true
+        restart: always
+        networks:
+            - prueba-network
