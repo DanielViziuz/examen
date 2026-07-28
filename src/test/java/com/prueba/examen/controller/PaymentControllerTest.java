@@ -71,8 +71,6 @@ public class PaymentControllerTest {
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("6a68b47378e5cb02071a9de2"));
-
-        //verify(paymentService).setPayment(any(PaymentRequestDTO.class));
     }
     
     @Test
@@ -101,8 +99,6 @@ public class PaymentControllerTest {
                 .andExpect(jsonPath("$.length()").value(2))
                 .andExpect(jsonPath("$[0].id").value("6a68b47378e5cb02071a9de2"))
                 .andExpect(jsonPath("$[1].id").value("6a68A66379y8cb02071a9af3"));
-
-        //verify(paymentService).getAllPayments();
     }
     
     @Test
@@ -121,8 +117,6 @@ public class PaymentControllerTest {
         mockMvc.perform(get("/payment/by").param("id", "6a68b47378e5cb02071a9de2"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value("6a68b47378e5cb02071a9de2"));
-
-        //verify(paymentService).getPaymentBy("123");
     }
     
     @Test
@@ -141,7 +135,5 @@ public class PaymentControllerTest {
                 .content(objectMapper.writeValueAsString(updateRequest)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("SUCCESSFUL"));
-
-        //verify(paymentService).updateStatusPayment("123", "COMPLETADO");
     }
 }

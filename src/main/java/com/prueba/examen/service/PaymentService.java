@@ -53,17 +53,21 @@ public class PaymentService implements IPaymentService{
 
 	@Override
 	public PaymentResponseDTO updateStatusPayment(String id, PaymentStatus status) {
-		Optional<Payment> paymentOptional = this.paymentRepository.findById(id);
-		if(paymentOptional.isPresent()) {			
-			Payment paymentFound = paymentOptional.get();
-			PaymentChangeEventDTO rabbitMQMessage = this.createMessageToRabbitMQ(id, paymentFound.getStatus().getDescription(), status.getDescription());
-			paymentFound.setStatus(status);
-			this.paymentRepository.save(paymentFound);
-			this.paymentPublisherService.publishStatusChange(rabbitMQMessage);//Publicando mensaje de cambio de status
-			return PaymentMapper.INSTANCE.toDTO(this.paymentRepository.findById(id).get());
+		if(id!=null) {
+			Optional<Payment> paymentOptional = this.paymentRepository.findById(id);
+			if(paymentOptional.isPresent()) {			
+				Payment paymentFound = paymentOptional.get();
+				PaymentChangeEventDTO rabbitMQMessage = this.createMessageToRabbitMQ(id, paymentFound.getStatus().getDescription(), status.getDescription());
+				paymentFound.setStatus(status);
+				this.paymentRepository.save(paymentFound);
+				this.paymentPublisherService.publishStatusChange(rabbitMQMessage);//Publicando mensaje de cambio de status
+				return PaymentMapper.INSTANCE.toDTO(this.paymentRepository.findById(id).get());
+			}else {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pago no encontrado");
+							
+			}
 		}else {
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Pago no encontrado");
-						
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El id del pago es obligatorio");
 		}
 	}
 	
