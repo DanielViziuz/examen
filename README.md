@@ -113,6 +113,22 @@ Ambas colas están asociadas al mismo routing key con el mismo exchange `topic`,
 
 ## Esquema de Base de Datos
 
-El JSON Schema del documento `Payment` (colección `Payment` en MongoDB) se encuentra en [`/schema/payment-schema.json`](./schema/payment-schema.json).
+El JSON Schema se llama `Payment` a continuación esta es la estructura.
+
+```json
+{
+  "title": "Payment",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "concept": { "type": "string" },
+    "productQuantity": { "type": "integer" },
+    "origin": { "type": "string" },
+    "destiny": { "type": "string" },
+    "totalAmount": { "type": "number" },
+    "status": { "type": "string", "enum": ["NEW", "IN_PROGRESS", "SUCCESSFUL", "ERROR"] }
+  }
+}
+```
 
 ---
