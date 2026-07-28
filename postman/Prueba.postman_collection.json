@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "5d132230-5bd1-43be-8eb1-f10424164026",
+		"name": "Prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HealthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/healthcheck",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/healthcheck",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"healthcheck"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 25 Jul 2026 17:24:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": \"Version 0.0.1-SNAPSHOT\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Set Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"concept\":\"Buy puzzle\",\n    \"productQuantity\":2,\n    \"origin\":\"Emisor1\",\n    \"destiny\":\"Store\",\n    \"totalAmount\":10.50,\n    \"status\":\"NEW\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Set Payment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"concept\":\"Buy puzzle\",\n    \"productQuantity\":2,\n    \"origin\":\"Emisor1\",\n    \"destiny\":\"Store\",\n    \"totalAmount\":10.50,\n    \"status\":\"NEW\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/payment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2026 20:06:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"6a690bda9e4b52569c611c50\",\n    \"concept\": \"Buy puzzle\",\n    \"productQuantity\": 2,\n    \"origin\": \"Emisor1\",\n    \"destiny\": \"Store\",\n    \"totalAmount\": 10.5,\n    \"status\": \"NEW\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update status",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\":\"SUCCESSFUL\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/payment/6a690a5a9e4b52569c611c4d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment",
+						"6a690a5a9e4b52569c611c4d"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update status",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\":\"SUCCESSFUL\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/payment/6a690a5a9e4b52569c611c4d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment",
+								"6a690a5a9e4b52569c611c4d"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2026 20:08:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"6a690a5a9e4b52569c611c4d\",\n    \"concept\": \"Buy puzzle\",\n    \"productQuantity\": 2,\n    \"origin\": \"Emisor1\",\n    \"destiny\": \"Store\",\n    \"totalAmount\": 10.5,\n    \"status\": \"SUCCESSFUL\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Payments",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/payment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2026 20:07:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"6a690a5a9e4b52569c611c4d\",\n        \"concept\": \"Buy puzzle\",\n        \"productQuantity\": 2,\n        \"origin\": \"Emisor1\",\n        \"destiny\": \"Store\",\n        \"totalAmount\": 10.5,\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"id\": \"6a690b719e4b52569c611c4e\",\n        \"concept\": \"Buy puzzle\",\n        \"productQuantity\": 2,\n        \"origin\": \"Emisor1\",\n        \"destiny\": \"Store\",\n        \"totalAmount\": 10.5,\n        \"status\": \"IN_PROGRESS\"\n    },\n    {\n        \"id\": \"6a690b889e4b52569c611c4f\",\n        \"concept\": \"Buy puzzle\",\n        \"productQuantity\": 2,\n        \"origin\": \"Emisor1\",\n        \"destiny\": \"Store\",\n        \"totalAmount\": 10.5,\n        \"status\": \"NEW\"\n    },\n    {\n        \"id\": \"6a690bda9e4b52569c611c50\",\n        \"concept\": \"Buy puzzle\",\n        \"productQuantity\": 2,\n        \"origin\": \"Emisor1\",\n        \"destiny\": \"Store\",\n        \"totalAmount\": 10.5,\n        \"status\": \"NEW\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Payment By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/payment/by?id=6a690a5a9e4b52569c611c4d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment",
+						"by"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6a690a5a9e4b52569c611c4d"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Payment By Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/payment/by?id=6a690a5a9e4b52569c611c4d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"payment",
+								"by"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6a690a5a9e4b52569c611c4d"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Jul 2026 20:08:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"6a690a5a9e4b52569c611c4d\",\n    \"concept\": \"Buy puzzle\",\n    \"productQuantity\": 2,\n    \"origin\": \"Emisor1\",\n    \"destiny\": \"Store\",\n    \"totalAmount\": 10.5,\n    \"status\": \"IN_PROGRESS\"\n}"
+				}
+			]
+		}
+	]
+}
