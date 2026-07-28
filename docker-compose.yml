@@ -13,8 +13,10 @@ services:
         networks:
             - prueba-network
         depends_on:
+            - rabbitmq
             - prueba-mongo
         links:
+            - rabbitmq
             - prueba-mongo
     prueba-mongo:
         container_name: prueba-mongo

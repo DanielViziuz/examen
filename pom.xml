@@ -79,11 +79,6 @@
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.gfb</groupId>
-			<artifactId>test</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 	<build>
