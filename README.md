@@ -72,7 +72,6 @@ Al actualizarse el status, el servicio publica automáticamente un evento a Rabb
 |---|---|
 | Nombre | `pagos.exchange` |
 | Tipo | `topic` |
-| Durable | Sí |
 
 Se eligió un exchange de tipo `topic` para permitir que, en el futuro, se agreguen nuevas colas con distintos patrones de routing key sin modificar el publisher (considerando la solicitud del examen).
 
