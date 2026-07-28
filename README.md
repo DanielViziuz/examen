@@ -96,8 +96,8 @@ Ambas colas están asociadas al mismo routing key con el mismo exchange `topic`,
 ```json
 {
   "paymentId": "64f1a2b3c4d5e6f7a8b9c0d1",
-  "previousStatus": "PENDIENTE",
-  "newStatus": "COMPLETADO",
+  "previousStatus": "IN_PROGRESS",
+  "newStatus": "SUCCESSFUL",
   "createdAt": "2026-07-28T10:30:00"
 }
 ```
